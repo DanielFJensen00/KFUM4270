@@ -1,9 +1,10 @@
 library(shiny)
 
-valg_år <- c("2018","2019","2020","2021","2022")
 
 ui <- fluidPage(
-  selectInput("regnskabsår", "Vælg regnskabsår", valg_år),
+  selectInput("dataset", label = "Dataset", choices = ls("package:datasets")),
+  verbatimTextOutput("summary"),
+  tableOutput("table")
 )
 
 server <- function(input, output, session) {
